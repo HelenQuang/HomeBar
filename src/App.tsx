@@ -10,6 +10,8 @@ function App() {
   return (
     <div className="container">
       <Header />
+      <SearchResults />
+      <Recipe />
     </div>
   );
 }
