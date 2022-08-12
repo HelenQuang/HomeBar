@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 
 import "../styles/searchResults.scss";
-
+import LoadingSpinner from "./LoadingSpinner";
 import DrinkInterface from "../models/DrinkInterface";
 
-const SearchResults: React.FC = () => {
+interface SearchResultsProps {
+  keyword: string;
+}
+
+const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [results, setResults] = useState<DrinkInterface[]>([]);
   const [error, setError] = useState<string>("");
@@ -14,7 +18,7 @@ const SearchResults: React.FC = () => {
 
     try {
       const res = await fetch(
-        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita"
+        `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${keyword}`
       );
 
       if (!res.ok) {
@@ -24,9 +28,14 @@ const SearchResults: React.FC = () => {
       }
 
       const data = await res.json();
-      setResults(data.drinks);
+      setLoading(false);
+
+      if (data.drinks !== null) {
+        setResults(data.drinks);
+      }
     } catch (error: any) {
       setError(error.message);
+      setLoading(false);
     }
   };
 
@@ -46,11 +55,16 @@ const SearchResults: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [keyword]);
 
   return (
     <div className="search-results">
-      <ul className="results">{previewResults}</ul>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <ul className="results">{previewResults}</ul>
+      )}
     </div>
   );
 };

@@ -53,19 +53,19 @@
   text-decoration: none;
 
   &:hover {
-    background-color: $color-grey-light-1;
+    background-color: white;
     transform: translateY(-2px);
   }
 
-  &--active {
-    background-color: $color-grey-light-1;
+  &:active {
+    background-color: white;
   }
 
   &__fig {
     flex: 0 0 5.8rem;
     border-radius: 50%;
     overflow: hidden;
-    height: 5.8rem;
+    height: 6rem;
     margin-right: 2rem;
     position: relative;
     backface-visibility: hidden;
@@ -83,7 +83,7 @@
         $color-grad-1,
         $color-grad-2
       );
-      opacity: 0.4;
+      opacity: 0.2;
     }
 
     img {
@@ -105,12 +105,11 @@
 
   &__title {
     grid-column: 1/-1;
-    font-size: 1.45rem;
-    color: $color-primary;
+    font-size: 1.5rem;
+    color: $color-grad-2;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 800;
 
-    // This is how text is truncated!
     text-overflow: ellipsis;
     max-width: 25rem;
     white-space: nowrap;
@@ -118,29 +117,10 @@
   }
 
   &__tags {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     color: $color-grey-dark-2;
-    text-transform: uppercase;
+    max-width: 25rem;
+    overflow-wrap: break-word;
     font-weight: 600;
-  }
-
-  &__user-generated {
-    background-color: darken($color-grey-light-2, 2%);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 2rem;
-    border-radius: 10rem;
-
-    margin-left: auto;
-    margin-right: 1.75rem;
-
-    svg {
-      height: 1.2rem;
-      width: 1.2rem;
-      fill: $color-primary;
-    }
   }
 }

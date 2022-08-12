@@ -8,10 +8,10 @@ import SearchResults from "./components/SearchResults";
 
 function App() {
   return (
-    <div className="container">
+    <div>
       <Header />
-      <SearchResults />
-      <Recipe />
+      {/* <SearchResults />
+      <Recipe /> */}
     </div>
   );
 }
