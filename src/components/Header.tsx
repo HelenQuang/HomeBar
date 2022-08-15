@@ -21,8 +21,6 @@ const Header: React.FC = () => {
     }
   };
 
-  console.log(keyword);
-
   return (
     <div className="container">
       <header className="header">

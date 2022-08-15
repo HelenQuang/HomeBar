@@ -59,19 +59,18 @@ body {
   border-radius: 9px;
   overflow: hidden;
   box-shadow: 0 2rem 3rem 2rem rgba($color-pink-light-1, 0.5);
-
-  display: grid;
-  grid-template-rows: 10rem minmax(100rem, auto);
-  grid-template-columns: 1fr 2fr;
-  grid-template-areas:
-    "head head"
-    "list recipe";
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: $bp-large) {
     max-width: 100%;
     margin: 0;
     border-radius: 0;
   }
+}
+.result-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
 }
 
 %btn {
@@ -186,12 +185,6 @@ body {
   &:focus {
     outline: none;
   }
-
-  svg {
-    height: 2.5rem;
-    width: 2.5rem;
-    fill: #fff;
-  }
 }
 
 .btn--tiny {
@@ -234,7 +227,6 @@ body {
   text-transform: uppercase;
   margin-bottom: 2.5rem;
   text-align: center;
-  // transform: skewY(-3deg);
 }
 
 .link:link,

@@ -1,1 +1,173 @@
 @import "../App.scss";
+
+.recipe {
+  ///////////
+  // FIGURE
+  &__fig {
+    height: 32rem;
+    position: relative;
+    transform-origin: top;
+
+    &::before {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-image: linear-gradient(
+        to right bottom,
+        $color-grad-1,
+        $color-grad-2
+      );
+      opacity: 0.2;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 20%) skewY(-6deg);
+    color: #fff;
+    font-weight: 700;
+    font-size: 3.25rem;
+    text-transform: uppercase;
+    width: 50%;
+    line-height: 1.95;
+    text-align: center;
+
+    span {
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      padding: 1.3rem 2rem;
+      background-image: linear-gradient(
+        to right bottom,
+        $color-grad-1,
+        $color-grad-2
+      );
+    }
+
+    @media only screen and (max-width: $bp-medium) {
+      width: 70%;
+    }
+  }
+
+  ///////////
+  // DETAILS
+  &__details {
+    display: flex;
+    align-items: center;
+    padding: 7.5rem 8rem 3.5rem 8rem;
+  }
+
+  &__info {
+    font-size: 1.65rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    margin-right: 12rem;
+  }
+
+  &__info-icon {
+    height: 3rem;
+    width: 3rem;
+    fill: $color-primary;
+    margin-right: 1.2rem;
+  }
+
+  &__info-data {
+    margin-right: 0.5rem;
+    font-weight: 700;
+  }
+
+  &__info-buttons {
+    display: flex;
+    margin-left: 1.6rem;
+    transform: translateY(-1px);
+  }
+
+  // &__user-generated {
+  //   background-color: darken($color-grey-light-2, 2%);
+
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   height: 4rem;
+  //   width: 4rem;
+  //   border-radius: 10rem;
+
+  //   margin-left: auto;
+  //   margin-right: 1.75rem;
+
+  //   svg {
+  //     height: 2.25rem;
+  //     width: 2.25rem;
+  //     fill: $color-primary;
+  //   }
+  // }
+
+  ///////////
+  // INGREDIENTS
+  &__ingredients {
+    padding: 5rem 8rem;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__ingredient-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 3rem;
+    list-style: none;
+  }
+
+  &__ingredient {
+    display: flex;
+  }
+
+  &__icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-primary;
+    margin-right: 1.1rem;
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+  }
+
+  &__quantity {
+    margin-right: 0.5rem;
+    flex: 0 0 auto;
+  }
+
+  ///////////
+  // INSTRUCTION
+  &__instruction {
+    padding: 5rem 10rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__instruction-text {
+    line-height: 3.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 3.5rem;
+    color: black;
+  }
+}

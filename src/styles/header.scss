@@ -1,11 +1,11 @@
 @import "../App.scss";
 
 .header {
-  grid-area: head;
   background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 2rem;
 
   &__logo {
     margin-left: 4rem;

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/searchResults.scss";
 import LoadingSpinner from "./LoadingSpinner";
 import DrinkInterface from "../models/DrinkInterface";
+import Recipe from "./Recipe";
 
 interface SearchResultsProps {
   keyword: string;
@@ -12,6 +13,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [results, setResults] = useState<DrinkInterface[]>([]);
   const [error, setError] = useState<string>("");
+  const [chosenDrink, setChosenDrink] = useState<DrinkInterface>();
 
   const fetchData = async () => {
     setLoading(true);
@@ -41,7 +43,13 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
 
   const previewResults = results.map((drink) => {
     return (
-      <li className="preview" key={drink.idDrink}>
+      <li
+        className="preview"
+        key={drink.idDrink}
+        onClick={() => {
+          setChosenDrink(drink);
+        }}
+      >
         <figure className="preview__fig">
           <img src={drink.strDrinkThumb} alt={drink.strDrink} />
         </figure>
@@ -59,12 +67,17 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
   }, [keyword]);
 
   return (
-    <div className="search-results">
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <ul className="results">{previewResults}</ul>
-      )}
+    <div className="result-container">
+      <div className="search-results">
+        {error && <p>There is some error. Please try again.</p>}
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <ul className="results">{previewResults}</ul>
+        )}
+      </div>
+
+      {chosenDrink ? <Recipe drink={chosenDrink} /> : <LoadingSpinner />}
     </div>
   );
 };
