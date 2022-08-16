@@ -66,6 +66,7 @@
   &__details {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     padding: 7.5rem 8rem 3.5rem 8rem;
   }
 
@@ -75,7 +76,6 @@
     font-weight: 600;
     display: flex;
     align-items: center;
-    margin-right: 12rem;
   }
 
   &__info-icon {
@@ -95,26 +95,6 @@
     margin-left: 1.6rem;
     transform: translateY(-1px);
   }
-
-  // &__user-generated {
-  //   background-color: darken($color-grey-light-2, 2%);
-
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: center;
-  //   height: 4rem;
-  //   width: 4rem;
-  //   border-radius: 10rem;
-
-  //   margin-left: auto;
-  //   margin-right: 1.75rem;
-
-  //   svg {
-  //     height: 2.25rem;
-  //     width: 2.25rem;
-  //     fill: $color-primary;
-  //   }
-  // }
 
   ///////////
   // INGREDIENTS

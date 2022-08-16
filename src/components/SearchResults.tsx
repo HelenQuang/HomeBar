@@ -4,6 +4,7 @@ import "../styles/searchResults.scss";
 import LoadingSpinner from "./LoadingSpinner";
 import DrinkInterface from "../models/DrinkInterface";
 import Recipe from "./Recipe";
+import Pagination from "./Pagination";
 
 interface SearchResultsProps {
   keyword: string;
@@ -14,6 +15,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
   const [results, setResults] = useState<DrinkInterface[]>([]);
   const [error, setError] = useState<string>("");
   const [chosenDrink, setChosenDrink] = useState<DrinkInterface>();
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const fetchData = async () => {
     setLoading(true);
@@ -34,6 +36,8 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
 
       if (data.drinks !== null) {
         setResults(data.drinks);
+      } else {
+        setResults([]);
       }
     } catch (error: any) {
       setError(error.message);
@@ -41,7 +45,12 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
     }
   };
 
-  const previewResults = results.map((drink) => {
+  const pages = Math.round(results.length / 10);
+  const startIndex = currentPage * 10 - 10;
+  const endIndex = startIndex + 10;
+  const shortenResults = results.slice(startIndex, endIndex);
+
+  const previewResults = shortenResults.map((drink) => {
     return (
       <li
         className="preview"
@@ -70,11 +79,25 @@ const SearchResults: React.FC<SearchResultsProps> = ({ keyword }) => {
     <div className="result-container">
       <div className="search-results">
         {error && <p>There is some error. Please try again.</p>}
-        {loading ? (
-          <LoadingSpinner />
+        {loading && <LoadingSpinner />}
+        {results.length === 0 ? (
+          <p className="preview__tags">
+            There is no drink found. Please try again.
+          </p>
         ) : (
-          <ul className="results">{previewResults}</ul>
+          <div>
+            <ul className="results">{previewResults}</ul>
+            {results.length > 10 && (
+              <Pagination
+                pages={pages}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+              />
+            )}
+          </div>
         )}
+
+        <p className="copyright">© Copyright by Helen Quang - 2022</p>
       </div>
 
       {chosenDrink ? <Recipe drink={chosenDrink} /> : <LoadingSpinner />}

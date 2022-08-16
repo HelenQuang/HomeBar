@@ -135,7 +135,7 @@ body {
   font-size: 1.3rem;
   font-weight: 600;
   border: none;
-  background-color: $color-grey-light-1;
+  background-color: white;
   padding: 0.8rem 1.2rem;
   border-radius: 10rem;
   cursor: pointer;
@@ -143,13 +143,6 @@ body {
   display: flex;
   align-items: center;
   transition: all 0.2s;
-
-  svg {
-    height: 1.6rem;
-    width: 1.6rem;
-    fill: currentColor;
-    margin: 0 0.2rem;
-  }
 
   span {
     margin: 0 0.4rem;

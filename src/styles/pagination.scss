@@ -1,0 +1,19 @@
+@import "../App.scss";
+
+.pagination {
+  margin-top: auto;
+  padding: 0 3.5rem;
+
+  &__btn {
+    &--prev {
+      float: left;
+    }
+    &--next {
+      float: right;
+    }
+  }
+}
+
+.disabled {
+  display: none;
+}
